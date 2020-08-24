@@ -10,6 +10,10 @@ wnWidth = 800
 wn.setup(width=wnWidth, height=wnHeight)
 wn.tracer(0)
 
+# Score
+scoreA = 0
+scoreB = 0
+
 #Paddle A
 paddleA = turtle.Turtle()
 paddleA.speed(0)
@@ -37,6 +41,17 @@ ball.penup()
 ball.goto(0, 0)
 ball.dx = 0.2
 ball.dy = -0.2
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A:0  Player B:0",
+          align='center',
+          font=('Courier', 24, 'normal'))
 
 
 #Functions
@@ -91,10 +106,20 @@ while True:
     if ball.xcor() > wnWidth / 2:
         ball.goto(0, 0)
         ball.dx *= -1
+        scoreA += 1
+        pen.clear()
+        pen.write("Player A:{}  Player B:{}".format(scoreA, scoreB),
+                  align='center',
+                  font=('Courier', 24, 'normal'))
 
     if ball.xcor() < -wnWidth / 2:
         ball.goto(0, 0)
         ball.dx *= -1
+        scoreB += 1
+        pen.clear()
+        pen.write("Player A:{}  Player B:{}".format(scoreA, scoreB),
+                  align='center',
+                  font=('Courier', 24, 'normal'))
 
     # paddle and ball collisions
     if ball.xcor() > wnWidth / 2 - 60 and ball.xcor() < wnWidth / 2 - 50 and (
