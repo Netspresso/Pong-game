@@ -1,6 +1,7 @@
 '''Simple Pong game in Python 3'''
 
 import turtle
+import winsound
 
 wn = turtle.Screen()
 wn.title("Pong by Marszal")
@@ -98,10 +99,12 @@ while True:
     if ball.ycor() > wnHeight / 2 - 10:
         ball.sety(wnHeight / 2 - 10)
         ball.dy *= -1
+        winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
 
     if ball.ycor() < -wnHeight / 2 + 10:
         ball.sety(-wnHeight / 2 + 10)
         ball.dy *= -1
+        winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
 
     if ball.xcor() > wnWidth / 2:
         ball.goto(0, 0)
@@ -126,8 +129,10 @@ while True:
             ball.ycor() < paddleB.ycor() + 40
             and ball.ycor() > paddleB.ycor() - 40):
         ball.dx *= -1
+        winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
 
     if ball.xcor() < -wnWidth / 2 + 60 and ball.xcor(
     ) < -wnWidth / 2 + 50 and (ball.ycor() < paddleA.ycor() + 40
                                and ball.ycor() > paddleA.ycor() - 40):
         ball.dx *= -1
+        winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
